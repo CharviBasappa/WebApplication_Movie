@@ -42,7 +42,7 @@ namespace WebApplication_Movie.Controllers
         {
             var actorDetails = await _service.GetByIdAsync(id);
 
-            if (actorDetails == null) return View("Not Found");
+            if (actorDetails == null) return View("NotFound");
             return View(actorDetails);
         }
 
@@ -51,7 +51,7 @@ namespace WebApplication_Movie.Controllers
         {
             var actorDetails = await _service.GetByIdAsync(id);
 
-            if (actorDetails == null) return View("Not Found");
+            if (actorDetails == null) return View("NotFound");
             return View(actorDetails);
         }
 
@@ -71,7 +71,7 @@ namespace WebApplication_Movie.Controllers
         {
             var actorDetails = await _service.GetByIdAsync(id);
 
-            if (actorDetails == null) return View("Not Found");
+            if (actorDetails == null) return View("NotFound");
             return View(actorDetails);
         }
 
@@ -79,7 +79,7 @@ namespace WebApplication_Movie.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var actorDetails = await _service.GetByIdAsync(id);
-            if (actorDetails == null) return View("Not Found");
+            if (actorDetails == null) return View("NotFound");
 
             await _service.DeleteAsync(id);
             /*if (ModelState.IsValid)
