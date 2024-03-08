@@ -8,7 +8,8 @@ namespace WebApplication_Movie.Controllers
 {
     public class ActorsController : Controller
     {
-        private readonly IActorsService _service;
+/*        private readonly AppDbContext _context;
+*/        private readonly IActorsService _service;
         public ActorsController(IActorsService service)
         {
                 _service = service;
