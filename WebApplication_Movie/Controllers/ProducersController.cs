@@ -9,8 +9,8 @@ namespace WebApplication_Movie.Controllers
 {
     public class ProducersController : Controller
     {
-        private readonly AppDbContext _context;
-        private readonly IProducersService _service;
+/*        private readonly AppDbContext _context;
+*/        private readonly IProducersService _service;
         public ProducersController(IProducersService service)
         {
             _service = service;

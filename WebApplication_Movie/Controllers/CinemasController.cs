@@ -1,20 +1,95 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplication_Movie.Data;
+using WebApplication_Movie.Data.Services;
+using WebApplication_Movie.Models;
 
 namespace WebApplication_Movie.Controllers
 {
     public class CinemasController : Controller
     {
-        private readonly AppDbContext _context;
-        public CinemasController(AppDbContext context)
+        private readonly ICinemasService _service;
+        public CinemasController(ICinemasService service)
         {
-            _context = context;
+            _service = service;
         }
         public async Task<IActionResult> Index()
         {
-            var allCinemas = await _context.Cinemas.ToListAsync();
-            return View(allCinemas);
+            var data = await _service.GetAllAsync();
+            return View(data);
+        }
+
+        //Get: Cinemas/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("Logo, Name, Description")]Cinema cinema)
+        {
+            if(ModelState.IsValid)
+            {
+                return View(cinema);
+            }
+            await _service.AddAsync(cinema);
+            return RedirectToAction(nameof(Index));
+        }
+
+        //Get: Cinemas/Details/1
+        public async Task<IActionResult> Details(int id)
+        {
+            var cinemaDetails = await _service.GetByIdAsync(id);
+            if (cinemaDetails == null)
+            {
+                return View("Empty");
+            }
+            return View(cinemaDetails);
+        }
+
+        //Get: Cinemas/Edit/1
+        public async Task<IActionResult> Edit(int id)
+        {
+            var cinemaDetails = await _service.GetByIdAsync(id);
+            if (cinemaDetails == null)
+            {
+                return View("Not Found");
+            }
+            return View(cinemaDetails);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, [Bind("Id, Logo, Name, Description")] Cinema cinema)
+        {
+            if (ModelState.IsValid)
+            {
+                return View(cinema);
+            }
+            await _service.UpdateAsync(id, cinema);
+            return RedirectToAction(nameof(Index));
+        }
+
+        //Get: Cinemas/Delete/1
+        public async Task<IActionResult> Delete(int id)
+        {
+            var cinemaDetails = await _service.GetByIdAsync(id);
+            if (cinemaDetails == null)
+            {
+                return View("Not Found");
+            }
+            return View(cinemaDetails);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var cinemaDetails = await _service.GetByIdAsync(id);
+            if (cinemaDetails == null)
+            {
+                return View("Not Found");
+            }
+            await _service.DeleteAsync(id);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
