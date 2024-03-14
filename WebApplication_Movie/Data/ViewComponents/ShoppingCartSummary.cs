@@ -13,9 +13,10 @@ namespace WebApplication_Movie.Data.ViewComponents
 
         public IViewComponentResult Invoke()
         {
-            var items = _shoppingCart.GetShoppingCartItems();
+            var items = _shoppingCart.GetShoppingCartItems()
+                .Sum(item => item.Amount);
 
-            return View(items.Count);
+            return View(items);
         }
     }
 }

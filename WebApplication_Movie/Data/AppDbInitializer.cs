@@ -323,7 +323,7 @@ namespace WebApplication_Movie.Data
 
         }
 
-        public static async Task SeedUsersAndRolesAsync(IApplicationBuilder applicationBuilder)
+       /* public static async Task SeedUsersAndRolesAsync(IApplicationBuilder applicationBuilder)
         {
             using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
             {
@@ -371,6 +371,6 @@ namespace WebApplication_Movie.Data
                     await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
                 }
             }
-        }
+        }*/
     }
 }
