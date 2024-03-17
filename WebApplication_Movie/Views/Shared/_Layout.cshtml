@@ -48,11 +48,12 @@
 
                     <form class="form-inline my-2 my-lg-0" asp-controller="Movies" asp-action="Filter">
                         <div class="input-group">
-                            <input name="searchString" type="text" class="form-control" placeholder="Search for a movie..." aria-label="Search">
+                            <input name="searchString" type="text" class="form-control" placeholder="Search for a movie... " aria-label="Search">
                             <div class="input-group-append">
                                 <button class="btn btn-outline-success" type="submit">
-                                    <i class="bi bi-search"></i>
+                                    <i class="bi bi-search"> </i>
                                 </button>
+                                <span style="padding: 5px;"></span>
                             </div>
                         </div>
                     </form>
@@ -62,9 +63,9 @@
 
                     @* <ul class="navbar-nav">
                     @await Component.InvokeAsync("ShoppingCartSummary")
-                    </ul>
+                    </ul> *@
 
-                    <partial name="_Identity.cshtml" /> *@
+                    <partial name="_Identity.cshtml" />
                 </div>
             </div>
         </nav>

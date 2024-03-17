@@ -31,7 +31,7 @@ namespace WebApplication_Movie.Controllers
 
 
         public IActionResult Login() => View(new LoginVM());
-
+         
         [HttpPost]
         public async Task<IActionResult> Login(LoginVM loginVM)
         {

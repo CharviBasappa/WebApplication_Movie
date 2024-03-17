@@ -9,6 +9,7 @@ using WebApplication_Movie.Models;
 
 namespace WebApplication_Movie.Controllers
 {
+    [Authorize]
     public class MoviesController : Controller
     {
         /*private readonly AppDbContext _context;*/

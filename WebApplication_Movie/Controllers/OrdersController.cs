@@ -3,9 +3,11 @@ using System.Security.Claims;
 using WebApplication_Movie.Data.Services;
 using WebApplication_Movie.Data.Cart;
 using WebApplication_Movie.Data.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApplication_Movie.Controllers
 {
+    [Authorize]
     public class OrdersController : Controller
     {
         private readonly IMoviesService _moviesService;

@@ -59,7 +59,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Movies}/{action=Index}/{id?}");
 
-using (var scope = app.Services.CreateScope())
+/*using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
 
@@ -75,11 +75,10 @@ using (var scope = app.Services.CreateScope())
         var logger = services.GetRequiredService<ILogger<Program>>();
         logger.LogError(ex, "An error occurred while seeding the database.");
     }
-}
+}*/
+await AppDbInitializer.SeedUsersAndRolesAsync(app);
 
 
 app.Run();
 
-
-//AppDbInitializer.Seed(app);
 

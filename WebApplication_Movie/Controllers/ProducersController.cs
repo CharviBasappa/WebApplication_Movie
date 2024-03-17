@@ -7,6 +7,7 @@ using WebApplication_Movie.Models;
 
 namespace WebApplication_Movie.Controllers
 {
+    [Authorize]
     public class ProducersController : Controller
     {
 /*        private readonly AppDbContext _context;
@@ -15,6 +16,8 @@ namespace WebApplication_Movie.Controllers
         {
             _service = service;
         }
+
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var allProducers = await _service.GetAllAsync();
