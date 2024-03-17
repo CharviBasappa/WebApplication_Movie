@@ -4,12 +4,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebApplication_Movie.Data;
 using WebApplication_Movie.Data.Services;
+using WebApplication_Movie.Data.Static;
 using WebApplication_Movie.Data.ViewModels;
 using WebApplication_Movie.Models;
 
 namespace WebApplication_Movie.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = UserRoles.Admin)]
     public class MoviesController : Controller
     {
         /*private readonly AppDbContext _context;*/

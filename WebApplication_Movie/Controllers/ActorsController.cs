@@ -2,11 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using WebApplication_Movie.Data;
 using WebApplication_Movie.Data.Services;
+using WebApplication_Movie.Data.Static;
 using WebApplication_Movie.Models;
 
 namespace WebApplication_Movie.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = UserRoles.Admin)]
     public class ActorsController : Controller
     {
 /*        private readonly AppDbContext _context;
