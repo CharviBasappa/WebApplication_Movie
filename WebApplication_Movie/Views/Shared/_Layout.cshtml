@@ -24,8 +24,8 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="Index"><i class="bi bi-film"></i> Movies</a>
                         </li>
 
-                        @* @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                        { *@
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="bi bi-gear"></i> Management
@@ -37,7 +37,7 @@
                                 <a class="dropdown-item" asp-controller="Actors" asp-action="Index"><i class="bi bi-person-square"></i> Actors</a>
                             </div>
                         </li>
-                        @* } *@
+                        }
 
                     </ul>
 
@@ -60,10 +60,6 @@
                     <ul class="navbar-nav">
                         @await Component.InvokeAsync("ShoppingCartSummary")
                     </ul>
-
-                    @* <ul class="navbar-nav">
-                    @await Component.InvokeAsync("ShoppingCartSummary")
-                    </ul> *@
 
                     <partial name="_Identity.cshtml" />
                 </div>
