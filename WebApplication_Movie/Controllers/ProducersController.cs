@@ -32,7 +32,7 @@ namespace WebApplication_Movie.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("FullName,ProfilePictureURL,Bio")] Producer producer)
+        public async Task<IActionResult> Create(int id, [Bind("Id, FullName,ProfilePictureURL,Bio")] Producer producer)
         {
             if (ModelState.IsValid)
             {

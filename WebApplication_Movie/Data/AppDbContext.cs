@@ -43,8 +43,8 @@ namespace WebApplication_Movie.Data
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
 
 
-        /*//Account related
+        //Account related
         public DbSet<ApplicationUser> Users { get; set; }
-*/
+
     }
 }
