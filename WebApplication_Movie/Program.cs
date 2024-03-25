@@ -38,7 +38,11 @@ builder.Services.AddControllersWithViews();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
+else
 {
     app.UseExceptionHandler("/Home/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
@@ -55,27 +59,17 @@ app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Movies}/{action=Index}/{id?}");
+app.UseAuthorization();
 
-/*using (var scope = app.Services.CreateScope())
+app.UseEndpoints(endpoints =>
 {
-    var services = scope.ServiceProvider;
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Movies}/{action=Index}/{id?}");
+});
 
-    try
-    {
-        var context = services.GetRequiredService<AppDbContext>();
-        // Seeding logic here
-        AppDbInitializer.Seed(app);
-    }
-    catch (Exception ex)
-    {
-        // Log the exception
-        var logger = services.GetRequiredService<ILogger<Program>>();
-        logger.LogError(ex, "An error occurred while seeding the database.");
-    }
-}*/
+//Seed database
+AppDbInitializer.Seed(app);
 await AppDbInitializer.SeedUsersAndRolesAsync(app);
 
 

@@ -62,7 +62,9 @@
                                     <div class="column text-center">
                                         <img class="border-info rounded-circle" src="@actor.Actor.ProfilePictureURL" style="max-width: 150px" />
                                         <br />
-                                        <a asp-controller="Actors" asp-action="Details" asp-route-id="@actor.ActorId">@actor.Actor.FullName</a>
+                                        <a asp-controller="Actors" 
+                                        asp-action="Details" 
+                                        asp-route-id="@actor.ActorId">@actor.Actor.FullName</a>
                                     </div>
                                 }
                             </div>
@@ -78,7 +80,9 @@
                             </a>
                             <a class="btn btn-success text-white  @((DateTime.Now > Model.EndDate) ? "disabled" : "")"
                                asp-controller="Orders"
-                               asp-action="AddItemToShoppingCart" asp-route-id="@Model.Id"><i class="bi bi-cart-plus"></i> Add to Cart (Price @Model.Price.ToString("c"))</a>
+                               asp-action="AddItemToShoppingCart" 
+                               asp-route-id="@Model.Id">
+                               <i class="bi bi-cart-plus"></i> Add to Cart (Price @Model.Price.ToString("c"))</a>
                         </p>
                     </div>
                 </div>
